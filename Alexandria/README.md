@@ -4,7 +4,7 @@ It's a barcode scanner App for books.
 
 ### Critical point (need fix)
 
-- Alexandria crash when searching a book and there is no connection
+- Alexandria crash when searching a book and there is no connection [**FIXED**]
 - The scan functionality doesn't work (Only display a toast)
 
 ### For Extra point
