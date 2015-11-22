@@ -102,6 +102,8 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                Intent scannerIntent = new Intent(getActivity(),ScannerActivity.class);
+                startActivity(scannerIntent);
 
             }
         });
@@ -130,6 +132,16 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         }
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data != null && data.hasExtra(ScannerActivity.ISBN_EXTRA)){
+            String scannedIsbn = data.getStringExtra(ScannerActivity.ISBN_EXTRA);
+            Toast.makeText(getActivity(), getString(R.string.scan_result,scannedIsbn),Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void restartLoader(){
