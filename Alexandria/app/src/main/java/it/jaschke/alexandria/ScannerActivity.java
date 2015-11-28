@@ -9,12 +9,15 @@ import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
+//EDIT 3: basic version of scanner through ZXingScannerView
+
 public class ScannerActivity extends Activity implements ZXingScannerView.ResultHandler {
 
     private ZXingScannerView mScannerView;
 
     private final String LOG_TAG = ScannerActivity.class.getSimpleName();
     public final static String ISBN_EXTRA = "it.jaschke.alexandria.scan.result";
+    public static final int SCAN_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

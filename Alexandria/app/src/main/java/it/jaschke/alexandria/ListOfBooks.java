@@ -79,6 +79,14 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
         return rootView;
     }
 
+
+    //EDIT 1: call notify data set changed for update the adapter (After a delete)
+    @Override
+    public void onResume() {
+        super.onResume();
+        bookListAdapter.notifyDataSetChanged();
+    }
+
     private void restartLoader(){
         getLoaderManager().restartLoader(LOADER_ID, null, this);
     }

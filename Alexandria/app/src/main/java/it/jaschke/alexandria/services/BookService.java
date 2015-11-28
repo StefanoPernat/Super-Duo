@@ -42,6 +42,7 @@ public class BookService extends IntentService {
         super("Alexandria");
     }
 
+    //EDIT 2: update onHandleIntent for make delete book working after a book was added
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
@@ -50,7 +51,10 @@ public class BookService extends IntentService {
                 final String ean = intent.getStringExtra(EAN);
                 fetchBook(ean);
             } else if (DELETE_BOOK.equals(action)) {
-                final String ean = intent.getStringExtra(EAN);
+                String ean = intent.getStringExtra(EAN);
+                if(ean.length() == 10 && !ean.startsWith("978")){
+                    ean = "978" + ean;
+                }
                 deleteBook(ean);
             }
         }

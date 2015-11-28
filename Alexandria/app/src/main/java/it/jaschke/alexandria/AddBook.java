@@ -26,16 +26,18 @@ import it.jaschke.alexandria.services.DownloadImage;
 
 
 public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-    private static final String TAG = "INTENT_TO_SCAN_ACTIVITY";
+    //private static final String TAG = "INTENT_TO_SCAN_ACTIVITY";
+
     private EditText ean;
     private final int LOADER_ID = 1;
     private View rootView;
     private final String EAN_CONTENT="eanContent";
-    private static final String SCAN_FORMAT = "scanFormat";
+
+    /*private static final String SCAN_FORMAT = "scanFormat";
     private static final String SCAN_CONTENTS = "scanContents";
 
     private String mScanFormat = "Format:";
-    private String mScanContents = "Contents:";
+    private String mScanContents = "Contents:";*/
 
 
 
@@ -103,7 +105,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
                 Intent scannerIntent = new Intent(getActivity(),ScannerActivity.class);
-                startActivity(scannerIntent);
+                startActivityForResult(scannerIntent,ScannerActivity.SCAN_REQUEST_CODE);
 
             }
         });
@@ -134,6 +136,9 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         return rootView;
     }
 
+
+    //EDIT 4: Toast for check scanner result
+    // TODO start the service on scanner result, ean EditText = scannedEan ==> start service and restart loader
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -170,6 +175,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
     @Override
     public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
         if (!data.moveToFirst()) {
+            //data.close();
             return;
         }
 
@@ -194,11 +200,13 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
         rootView.findViewById(R.id.save_button).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.delete_button).setVisibility(View.VISIBLE);
+
+        //data.close();
+
     }
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
-
     }
 
     private void clearFields(){
