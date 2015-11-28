@@ -72,6 +72,7 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
                 if (cursor != null && cursor.moveToPosition(position)) {
                     ((Callback)getActivity())
                             .onItemSelected(cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry._ID)));
+                    cursor.close();
                 }
             }
         });

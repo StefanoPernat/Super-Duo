@@ -46,12 +46,15 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         Bundle arguments = getArguments();
+
+        rootView = inflater.inflate(R.layout.fragment_full_book, container, false);
+
+        //EDIT 4: MOVED RESTART LOADER AFTER INFLATE
         if (arguments != null) {
             ean = arguments.getString(BookDetail.EAN_KEY);
             getLoaderManager().restartLoader(LOADER_ID, null, this);
         }
 
-        rootView = inflater.inflate(R.layout.fragment_full_book, container, false);
         rootView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,5 +140,11 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
         if(MainActivity.IS_TABLET && rootView.findViewById(R.id.right_container)==null){
             getActivity().getSupportFragmentManager().popBackStack();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getLoaderManager().destroyLoader(LOADER_ID);
     }
 }

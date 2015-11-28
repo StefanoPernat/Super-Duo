@@ -145,6 +145,13 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         if(data != null && data.hasExtra(ScannerActivity.ISBN_EXTRA)){
             String scannedIsbn = data.getStringExtra(ScannerActivity.ISBN_EXTRA);
             Toast.makeText(getActivity(), getString(R.string.scan_result,scannedIsbn),Toast.LENGTH_SHORT).show();
+            ean.setText(scannedIsbn);
+
+            Intent bookIntent = new Intent(getActivity(), BookService.class);
+            bookIntent.putExtra(BookService.EAN, scannedIsbn);
+            bookIntent.setAction(BookService.FETCH_BOOK);
+            getActivity().startService(bookIntent);
+            AddBook.this.restartLoader();
 
         }
     }
