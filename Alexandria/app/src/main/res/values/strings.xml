@@ -29,5 +29,5 @@
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="about_text">This Application is related to the Udacity's Android Developer Nanodegree (Super Duo! project) original version by Sascha Jaschke</string>
+    <string name="about_text">This Application is related to the Udacity\'s Android Developer Nanodegree (Super Duo! project) original version by Sascha Jaschke</string>
 </resources>
