@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="leagues_codes">
+        <item>394</item>        <!-- Bundesliga -->
+        <item>395</item>        <!-- Zweite Bundesliga -->
+        <item>396</item>        <!-- Ligue 1 -->
+        <item>397</item>        <!-- Ligue 2 -->
+        <item>398</item>        <!-- Premier League -->
+        <item>399</item>        <!-- Primera Division -->
+        <item>400</item>        <!-- Segunda Division -->
+        <item>401</item>        <!-- Serie A -->
+        <item>402</item>        <!-- Primera Liga -->
+        <item>403</item>        <!-- 3. Bundesliga -->
+        <item>404</item>        <!-- Eredivisie -->
+        <item>405</item>        <!-- Champions League -->
+    </array>
+
+    <array name="leagues_names">
+        <item>Bundesliga</item>
+        <item>2. Bundesliga</item>
+        <item>Ligue 1</item>
+        <item>Ligue 2</item>
+        <item>Premier League</item>
+        <item>Primera Division</item>
+        <item>Segunda Division</item>
+        <item>Serie A</item>
+        <item>3. Bundesliga</item>
+        <item>Eredivisie</item>
+        <item>Champions League</item>
+    </array>
+</resources>
